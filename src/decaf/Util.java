@@ -2,28 +2,28 @@ package decaf;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Util {
-    enum TokenType {
-        UNUSED              ,
-        EOF                 ,
-        NULL_TREE_LOOKAHEAD ,
-        TK_class            ,
-        LCURLY              ,
-        RCURLY              ,
-        ID                  ,
-        WS_                 ,
-        SL_COMMENT          ,
-        CHAR                ,
-        STRING              ,
-        ESC
+    private static final Map<Integer, String> tokenTypeToString = createMap();
+
+    private static Map<Integer, String> createMap() {
+        final Map<Integer, String> map = new HashMap<Integer, String>();
+        final DecafParserTokenTypes decafParserTokenTypes = new DecafParserTokenTypes() {};
+        for (Field field : DecafParserTokenTypes.class.getDeclaredFields()) {
+            try {
+                map.put(field.getInt(decafParserTokenTypes), field.getName());
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return map;
     }
 
     public static String tokenTypeAsString (int type) {
-        if (type <= 0 || type > TokenType.values().length -1) {
-            throw new IllegalArgumentException("Token type must be...");
-        }
-        return TokenType.values()[type].name();
+        return tokenTypeToString.get(type);
     }
 
     public static void close(Closeable closeable) {
@@ -35,5 +35,4 @@ public class Util {
             }
         }
     }
-
 }
