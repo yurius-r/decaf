@@ -3,11 +3,11 @@
   <!-- Manually generated java files -->
   <property name="src"     location="src"     />
   <!-- Auto-generated java files -->
-  <property name="java"    location="java"    />
+  <property name="java"    location="gen_java"    />
   <!-- Target Dir for compile -->
   <property name="classes" location="classes" />
   <!-- Jar directory -->
-  <property name="dist"    location="dist"    />
+  <property name="dist"    location="gen_dist"    />
   <!-- Runtime libraries -->
   <property name="lib"     location="lib"     />
   <!-- Binaries for tools, etc. -->
