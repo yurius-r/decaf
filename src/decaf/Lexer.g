@@ -17,18 +17,23 @@ tokens
   "class";
 }
 
-LCURLY options { paraphrase = "{"; } : "{";
+/*LCURLY options { paraphrase = "{"; } : "{";
 RCURLY options { paraphrase = "}"; } : "}";
 
 ID options { paraphrase = "an identifier"; } : 
   ('a'..'z' | 'A'..'Z')+;
-
+*/
 WS_ : (' ' | '\n' {newline();}) {_ttype = Token.SKIP; };
 
 SL_COMMENT : "//" (~'\n')* '\n' {_ttype = Token.SKIP; newline (); };
 
-CHAR : '\'' (ESC|~'\'') '\'';
+CHARLITERAL : '\'' ('('..'[' | ']'..'~' | '#'..'&' | ' ' | '!' | "\\n" | "\\t" | "\\\\" | "\\'" | "\\\"" ) '\'';
+
+//fragment CHAR :  '('..'~' | '#'..'&' | ' ' | '!' | '\n' | '\t' | '\\' | '\'' | '\"';
+/*
+
 STRING : '"' (ESC|~'"')* '"';
 
 protected
 ESC :  '\\' ('n'|'"');
+*/
