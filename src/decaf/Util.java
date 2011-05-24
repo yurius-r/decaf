@@ -1,6 +1,8 @@
 package decaf;
 
 import java.io.Closeable;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -11,8 +13,8 @@ public class Util {
 
     private static Map<Integer, String> createMap() {
         final Map<Integer, String> map = new HashMap<Integer, String>();
-        final DecafParserTokenTypes decafParserTokenTypes = new DecafParserTokenTypes() {};
-        for (Field field : DecafParserTokenTypes.class.getDeclaredFields()) {
+        final DecafScannerTokenTypes decafParserTokenTypes = new DecafScannerTokenTypes() {};
+        for (Field field : DecafScannerTokenTypes.class.getDeclaredFields()) {
             try {
                 map.put(field.getInt(decafParserTokenTypes), field.getName());
             } catch (IllegalAccessException e) {
@@ -35,4 +37,25 @@ public class Util {
             }
         }
     }
+//
+//    public static void main(String[] args) {
+//        for (int i = 32; i <= 126; i++) {
+//            if (i != 92) {
+//                System.out.println(i + " =" + (char)i);
+//            } else {
+//                System.out.println(i + " =" + (char)i + "\t" + (int) '\\' + " =" + '\\');
+//            }
+//        }
+//
+//    }
+//    public static void main(String[] args) throws IOException {
+//        final FileInputStream is = new FileInputStream("D:\\hobby\\mit\\6.035\\work\\src-test\\resources\\scanner\\char4");
+//        int i = 0;
+//        while ((i = is.read()) > 0) {
+//            System.out.println(i + " =*" + (char)i + "*");
+//        }
+//        System.out.println("*********");
+//        i = (int) '\n';
+//        System.out.println(i + " =*" + (char)i + "*");
+//    }
 }
