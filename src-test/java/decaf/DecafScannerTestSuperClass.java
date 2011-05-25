@@ -90,11 +90,6 @@ public class DecafScannerTestSuperClass {
         }
     }
 
-    @Test
-    public void testScanBigWrongFile() {
-        testLexer("char1");
-    }
-
     private String asString(Exception e, String fileName) {
         return fileName + " " + e;
     }
