@@ -41,7 +41,7 @@
     <pathelement path="${java.class.path}" />
   </path>
 
-  <target name="init">
+  <target name="init" depends="clean">
     <mkdir dir="${classes}"/>
     <mkdir dir="${java}"/>
     <mkdir dir="${dist}"/>
