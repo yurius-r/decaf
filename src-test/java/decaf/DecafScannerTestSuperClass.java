@@ -2,7 +2,7 @@ package decaf;
 
 import antlr.CharStreamException;
 import antlr.Token;
-import org.junit.Test;
+import antlr.TokenStreamException;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -50,12 +50,16 @@ public class DecafScannerTestSuperClass {
                         Token token = lexer.nextToken()
                         ; token.getType() != DecafParserTokenTypes.EOF
                         ; token = lexer.nextToken()) {
-                    assertEq(expectedOutput.readLine(), asString(token), results);
+                    Util.debug(Util.asString(token));
+                    assertEq(expectedOutput.readLine(), Util.asString(token), results);
                 }
                 break;
-            } catch(Exception e) {
+            } catch(TokenStreamException e) {
+                Util.debug(e);
                 assertEq(expectedOutput.readLine(), asString(e, fileName), results);
                 lexer.consume ();
+            } catch (Exception e) {
+                Util.error(e);
             }
         }
         String expectedString;
@@ -94,11 +98,6 @@ public class DecafScannerTestSuperClass {
         return fileName + " " + e;
     }
 
-    private String asString(Token token) {
-        return token.getLine()
-                + " " + Util.tokenTypeAsString(token.getType())
-                + " " + token.getText();
-    }
 
     public static void main(String[] args) {
         final String template =
