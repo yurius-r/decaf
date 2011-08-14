@@ -32,7 +32,7 @@ tokens
 }
 
 
-WS_ : (' ' | '\n' {newline();} | '\t' ) {_ttype = Token.SKIP; };
+WS_ : (' ' | ('\n' | "\r\n" | "\n\r" ){newline();} | '\t' ) {_ttype = Token.SKIP; };
 
 SL_COMMENT : '/' '/' (~'\n')* '\n' {_ttype = Token.SKIP; newline (); };
 

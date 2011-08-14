@@ -1,0 +1,5 @@
+1 IDENTIFIER print
+1 (
+1 STRINGLITERAL "Hello, World!"
+1 )
+1 ;

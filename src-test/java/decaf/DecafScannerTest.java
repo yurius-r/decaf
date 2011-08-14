@@ -105,6 +105,11 @@ public class DecafScannerTest extends DecafScannerTestSuperClass {
         testLexer("number2");
     }
 
+    @Test
+    public void testnumber3() {
+        testLexer("number3");
+    }
+
 
     @Test
     public void testop1() {
@@ -115,6 +120,16 @@ public class DecafScannerTest extends DecafScannerTestSuperClass {
     @Test
     public void testop2() {
         testLexer("op2");
+    }
+
+    @Test
+    public void testprogram1() {
+        testLexer("program1");
+    }
+
+    @Test
+    public void testprogram2() {
+        testLexer("program2");
     }
 
 
