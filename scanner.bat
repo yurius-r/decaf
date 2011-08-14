@@ -1,0 +1,1 @@
+java -jar dist/Compiler.jar -target scan -debug d:\hobby\mit\6.035\provided\scanner\char1

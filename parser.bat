@@ -1,0 +1,1 @@
+java -jar dist/Compiler.jar -target parse -debug d:\hobby\mit\6.035\provided\parser\legal-01
