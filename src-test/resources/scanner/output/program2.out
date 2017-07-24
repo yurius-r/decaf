@@ -1,0 +1,10 @@
+1 class
+1 IDENTIFIER Program
+1 {
+2 void
+2 IDENTIFIER main
+2 (
+2 )
+2 {
+4 }
+5 }
